@@ -102,7 +102,7 @@ public class Interface extends JFrame implements ActionListener{
             k3 = stmt3.getInt(3);
 
             if(e.getSource() == buton2 && text_user.getText().length() > 7 && text_parola.getPassword().length > 7 && k != 0) {
-                new Client();
+                new Client(userc,parolac);
                 System.out.println(k);
             }
             else if(e.getSource() == buton2 && text_user.getText().length() > 7 && text_parola.getPassword().length > 7 && k2 != 0) {
