@@ -17,7 +17,7 @@ public class Client implements ActionListener{
     JButton solicitare_card = new JButton("Solicitare card");
     JButton log_out = new JButton("Log out");
 
-    public Client(){
+    public Client(String username, String parola){
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
         frame.getContentPane().setBackground(Color.WHITE);
@@ -75,6 +75,5 @@ public class Client implements ActionListener{
     }
 
     public static void main(String[] args) {
-        Client client = new Client();
     }
 }
