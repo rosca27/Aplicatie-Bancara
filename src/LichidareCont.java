@@ -7,6 +7,8 @@ public class LichidareCont {
 
     JFrame frame4 = new JFrame("Lichidare cont");
     String[] v = {"mere","pere"};
+    JButton lichidare = new JButton("Lichideaza");
+    JLabel alege = new JLabel("Alegeti Contul");
     JList lista_conturi = new JList(v);
 
     public LichidareCont(){
@@ -14,7 +16,13 @@ public class LichidareCont {
         frame4.setLayout(null);
         frame4.setSize(500,400);
         frame4.setVisible(true);
-        lista_conturi.setBounds(100,100,400,300);
+        lista_conturi.setBounds(50,80,400,200);
+        lichidare.setBounds(200,300,100,50);
+        alege.setBounds(200,20,200,30);
+        alege.setFont(new Font("Times New Roman",Font.PLAIN,18));
+        frame4.setResizable(false);
+        frame4.add(alege);
+        frame4.add(lichidare);
         frame4.add(lista_conturi);
     }
 
