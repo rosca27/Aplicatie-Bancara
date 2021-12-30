@@ -171,6 +171,7 @@ public class Creeaza_cont extends JFrame implements ActionListener {
                     stmt.setString(13,tranzactiit);
                     stmt.execute();
                     frame2.dispatchEvent(new WindowEvent(frame2, WindowEvent.WINDOW_CLOSING));
+                    new Interface();
                 }
                 catch (SQLException d) {
                     d.printStackTrace();
