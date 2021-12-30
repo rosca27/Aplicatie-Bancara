@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -60,6 +61,7 @@ public class Creare_cont {
                                 stmt.setString(4,username);
                                 stmt.setString(5,parola);
                                 stmt.execute();
+                                frame5.dispatchEvent(new WindowEvent(frame5, WindowEvent.WINDOW_CLOSING));
                             }
                             catch(SQLException d){
                                 d.printStackTrace();
