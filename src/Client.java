@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Client implements ActionListener{
 
@@ -65,6 +68,13 @@ public class Client implements ActionListener{
         frame.add(vizualizarec);
         frame.add(transfer);
         frame.add(plata_facturi);
+
+        dcont.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Creare_cont(username,parola);
+            }
+        });
 
 
     }
