@@ -83,6 +83,13 @@ public class Client implements ActionListener{
             }
         });
 
+        vizualizarec.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Vizualizare_Cont(username,parola);
+            }
+        });
+
 
     }
 
