@@ -169,8 +169,8 @@ public class Creeaza_cont extends JFrame implements ActionListener {
                     stmt.setString(11,ant+"-"+lunat+"-"+zit);
                     stmt.setString(12,sursa_venit);
                     stmt.setString(13,tranzactiit);
-
                     stmt.execute();
+                    frame2.dispatchEvent(new WindowEvent(frame2, WindowEvent.WINDOW_CLOSING));
                 }
                 catch (SQLException d) {
                     d.printStackTrace();
