@@ -76,6 +76,13 @@ public class Client implements ActionListener{
             }
         });
 
+        lcont.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new LichidareCont(username,parola);
+            }
+        });
+
 
     }
 
