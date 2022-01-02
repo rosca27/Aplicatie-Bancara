@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Creare_depozit {
-    JFrame frame8 = new JFrame("Creare cont");
+    JFrame frame8 = new JFrame("Creare depozit");
     String v[] = {"3","6","9","12"};
     JComboBox tip_cont = new JComboBox(v);
     JTextField suma = new JTextField();
@@ -17,7 +17,7 @@ public class Creare_depozit {
     JLabel tsuma = new JLabel("Suma de inceput");
     JButton creeaza = new JButton("Creeaza depozit");
     public String tip_contt = ""; public int sumat ;
-    public Creare_depozit(/*String username, String parola*/){
+    public Creare_depozit(String username, String parola,String iban){
         frame8.setSize(600,300);
         frame8.setLayout(null);
         frame8.setVisible(true);
@@ -37,9 +37,24 @@ public class Creare_depozit {
         frame8.add(suma);
         frame8.add(tcont);
         frame8.add(tip_cont);
-    }
 
-    public static void main(String[] args) {
-        Creare_depozit d = new Creare_depozit();
+        creeaza.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "Sergiucraiova12");
+                    String query = "{call create_depozit_client(?,?,?)}";
+                    CallableStatement stmt = connection.prepareCall(query);
+                    stmt.setInt(1,Integer.valueOf(suma.getText()));
+                    stmt.setInt(2,Integer.valueOf(tip_cont.getSelectedItem().toString()));
+                    stmt.setString(3,iban);
+                    stmt.execute();
+                    frame8.dispatchEvent(new WindowEvent(frame8, WindowEvent.WINDOW_CLOSING));
+
+                }catch (SQLException d){
+                    d.printStackTrace();
+                }
+            }
+        });
     }
 }

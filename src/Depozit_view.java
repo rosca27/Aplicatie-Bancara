@@ -1,29 +1,31 @@
-import javax.naming.InsufficientResourcesException;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.sql.*;
-import java.util.Random;
 
-public class Vizualizare_Cont {
-    JFrame frame6 = new JFrame("Lichidare cont");
+public class Depozit_view {
+
+    JFrame frame7 = new JFrame("Deschidere depozit");
     DefaultListModel v = new DefaultListModel();
-    JButton alegere = new JButton("Vizualizare");
+    JButton alegere = new JButton("Deschidere depozit");
     JLabel alege = new JLabel("Alegeti Contul");
     JList lista_conturi = new JList(v);
-    public Vizualizare_Cont(String username, String parola){
+
+    public Depozit_view(String username, String parola){
         lista_conturi.setBounds(50,80,400,200);
-        frame6.add(lista_conturi);
-        frame6.setLayout(null);
-        frame6.setSize(500,400);
-        frame6.setVisible(true);
-        alegere.setBounds(180,300,120,50);
+        frame7.add(lista_conturi);
+        frame7.setLayout(null);
+        frame7.setSize(500,400);
+        frame7.setVisible(true);
+        alegere.setBounds(170,300,150,50);
         alegere.setFocusable(false);
         alege.setBounds(200,20,200,30);
         alege.setFont(new Font("Times New Roman",Font.PLAIN,18));
-        frame6.setResizable(false);
-        frame6.add(alege);
-        frame6.add(alegere);
+        frame7.setResizable(false);
+        frame7.add(alege);
+        frame7.add(alegere);
         try{
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "Sergiucraiova12");
             String query = "{call view_cont(?,?)}";
@@ -43,16 +45,13 @@ public class Vizualizare_Cont {
         catch(SQLException d){
 
         }
-
-
         alegere.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String ibann2 = lista_conturi.getSelectedValue().toString();
-                new Cont_vizualizat(username, parola,ibann2);
+                String iban2 = lista_conturi.getSelectedValue().toString();
+                new Creare_depozit(username,parola,iban2);
             }
         });
     }
-
 
 }
