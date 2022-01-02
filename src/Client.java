@@ -97,6 +97,13 @@ public class Client implements ActionListener{
             }
         });
 
+        vizualiared.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Depozit_view_2(username,parola);
+            }
+        });
+
 
     }
 
