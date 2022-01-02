@@ -5,18 +5,16 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 import java.awt.event.WindowEvent;
 
-public class LichidareCont {
-
-    JFrame frame4 = new JFrame("Lichidare cont");
+public class Lichidare_depozit {
+    JFrame frame4 = new JFrame("Lichidare depozit");
     DefaultListModel v = new DefaultListModel();
     JButton lichidare = new JButton("Lichideaza");
-    JLabel alege = new JLabel("Alegeti Contul");
+    JLabel alege = new JLabel("Alegeti depozitul");
     JList lista_conturi = new JList(v);
 
     public String ibann = "";
 
-    public LichidareCont(String username, String parola){
-
+    public Lichidare_depozit(String username, String parola){
 
         lista_conturi.setBounds(50,80,400,200);
         frame4.add(lista_conturi);
@@ -30,9 +28,10 @@ public class LichidareCont {
         frame4.setResizable(false);
         frame4.add(alege);
         frame4.add(lichidare);
+
         try{
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "Sergiucraiova12");
-            String query = "{call view_cont(?,?)}";
+            String query = "{call vizualizare_depozite(?,?)}";
             CallableStatement stmt = connection.prepareCall(query);
             stmt.setString(1,username);
             stmt.setString(2,parola);
@@ -41,44 +40,31 @@ public class LichidareCont {
             if(hasResults){
                 ResultSet rs = stmt.getResultSet();
                 while(rs.next()){
-                    String x = rs.getString(3);
-                    System.out.println(x+ '\n');
+                    String x = rs.getString(1);
                     v.addElement(x);
                 }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        catch(SQLException d){
-
-        }
-
         lichidare.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource() == lichidare){
+
+                try{
                     ibann = lista_conturi.getSelectedValue().toString();
-                    Connection connection2 = null;
-                    try {
-                        connection2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "Sergiucraiova12");
-                        String query2 = "{call lichidare_cont(?,?,?)}";
-                        CallableStatement stmt = connection2.prepareCall(query2);
-                        stmt.setString(1,username);
-                        stmt.setString(2,parola);
-                        stmt.setString(3,ibann);
-                        stmt.execute();
-                        frame4.dispatchEvent(new WindowEvent(frame4, WindowEvent.WINDOW_CLOSING));
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "Sergiucraiova12");
+                    String query = "{call lichidare_depo(?)}";
+                    CallableStatement stmt = connection.prepareCall(query);
+                    stmt.setString(1,ibann);
+                    stmt.execute();
+                    frame4.dispatchEvent(new WindowEvent(frame4, WindowEvent.WINDOW_CLOSING));
 
-                    } catch (SQLException ex) {
-                        ex.printStackTrace();
-                    }
+                }catch (SQLException d){
+                    d.printStackTrace();
                 }
-
             }
-
-
         });
 
-    }
-
-    public static void main(String[] args) {
     }
 }
