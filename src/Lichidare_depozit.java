@@ -58,12 +58,13 @@ public class Lichidare_depozit {
                     CallableStatement stmt = connection.prepareCall(query);
                     stmt.setString(1,ibann);
                     stmt.execute();
-                    frame4.dispatchEvent(new WindowEvent(frame4, WindowEvent.WINDOW_CLOSING));
 
                 }catch (SQLException d){
                     d.printStackTrace();
                 }
+                frame4.dispatchEvent(new WindowEvent(frame4, WindowEvent.WINDOW_CLOSING));
             }
+
         });
 
     }

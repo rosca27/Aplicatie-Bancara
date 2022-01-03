@@ -112,6 +112,12 @@ public class Client implements ActionListener{
             }
         });
 
+        log_out.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+
 
     }
 
