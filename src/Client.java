@@ -3,9 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Client implements ActionListener{
 
@@ -20,6 +18,7 @@ public class Client implements ActionListener{
     JButton transfer = new JButton("Transfer");
     JButton solicitare_card = new JButton("Solicitare card");
     JButton log_out = new JButton("Log out");
+    JLabel eroare = new JLabel("");
 
     public Client(String username, String parola){
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -59,6 +58,11 @@ public class Client implements ActionListener{
         log_out.setBounds(300,400,150,70);
         log_out.setFocusable(false);
 
+        eroare.setForeground(Color.RED);
+        eroare.setFont(new Font("Arial",Font.ITALIC,15));
+        eroare.setBounds(150,50,250,30);
+
+        frame.add(eroare);
         frame.add(log_out);
         frame.add(solicitare_card);
         frame.add(dcont);
@@ -73,7 +77,28 @@ public class Client implements ActionListener{
         dcont.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Creare_cont(username,parola);
+
+                try {
+
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "Sergiucraiova12");
+                    String query = "{call nr_c(?,?)}";
+                    CallableStatement stmt = connection.prepareCall(query);
+                    stmt.setString(1,username);
+                    stmt.setString(2,parola);
+                    stmt.execute();
+                    ResultSet rs = stmt.getResultSet();
+                    rs.next();
+                    int res = Integer.valueOf(rs.getString(1));
+                    if(res<5){
+                        new Creare_cont(username,parola);
+                        eroare.setText("");
+                    }
+                    else eroare.setText("Exista deja 5 conturi pe acest user");
+                }catch (SQLException d){
+                    d.printStackTrace();
+                }
+
+
             }
         });
 
