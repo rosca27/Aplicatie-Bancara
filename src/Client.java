@@ -115,6 +115,17 @@ public class Client implements ActionListener{
         log_out.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.dispose();
+                Interface c = new Interface();
+
+            }
+        });
+
+        solicitare_card.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Vizualizare_Card(username, parola);
             }
         });
 

@@ -18,6 +18,7 @@ public class Interface extends JFrame implements ActionListener{
     public Interface() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         text_user.setBounds(250,220,300,40);
         text_parola.setBounds(250,280,300,40);
@@ -103,6 +104,7 @@ public class Interface extends JFrame implements ActionListener{
 
             if(e.getSource() == buton2 && text_user.getText().length() > 7 && text_parola.getPassword().length > 7 && k != 0) {
                 new Client(userc,parolac);
+                frame.setVisible(false);
                 System.out.println(k);
             }
             else if(e.getSource() == buton2 && text_user.getText().length() > 7 && text_parola.getPassword().length > 7 && k2 != 0) {

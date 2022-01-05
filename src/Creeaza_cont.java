@@ -31,7 +31,6 @@ public class Creeaza_cont extends JFrame implements ActionListener {
     JComboBox an = new JComboBox(anv);
     JComboBox tranzactiio = new JComboBox(tranzactiiv);
 
-
     JLabel nume = new JLabel("Nume");
     JLabel prenume = new JLabel("Prenume");
     JLabel cnp = new JLabel("CNP");

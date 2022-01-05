@@ -17,7 +17,7 @@ public class Vizualizare_Cont {
         frame6.setLayout(null);
         frame6.setSize(500,400);
         frame6.setVisible(true);
-        alegere.setBounds(180,300,120,50);
+        alegere.setBounds(150,300,120,50);
         alegere.setFocusable(false);
         alege.setBounds(200,20,200,30);
         alege.setFont(new Font("Times New Roman",Font.PLAIN,18));
@@ -50,6 +50,7 @@ public class Vizualizare_Cont {
             public void actionPerformed(ActionEvent e) {
                 String ibann2 = lista_conturi.getSelectedValue().toString();
                 new Cont_vizualizat(username, parola,ibann2);
+                frame6.dispose();
             }
         });
     }

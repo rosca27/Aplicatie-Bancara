@@ -21,6 +21,7 @@ public class Depozit_view_2 {
         alegere.setFocusable(false);
         alege.setBounds(200,20,200,30);
         alege.setFont(new Font("Times New Roman",Font.PLAIN,18));
+
         frame7.setResizable(false);
         frame7.add(alege);
         frame7.add(alegere);
