@@ -110,7 +110,7 @@ public class Interface extends JFrame implements ActionListener{
             else if(e.getSource() == buton2 && text_user.getText().length() > 7 && text_parola.getPassword().length > 7 && k2 != 0) {
             }
             else if(e.getSource() == buton2 && text_user.getText().length() > 7 && text_parola.getPassword().length > 7 && k3 != 0){
-                new Admin();
+                new Admin(userc,parolac);
             }
             else{
             label3.setText("Utilizator sau parola invalide");
