@@ -154,6 +154,13 @@ public class Client implements ActionListener{
             }
         });
 
+        transfer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Vizualizare_cont_transfer(username, parola);
+            }
+        });
+
 
     }
 
