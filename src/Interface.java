@@ -72,6 +72,7 @@ public class Interface extends JFrame implements ActionListener{
 
         try {
             int k, k2,k3;
+            int a;
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "Sergiucraiova12");
 
             userc = String.valueOf(text_user.getText());
@@ -108,6 +109,16 @@ public class Interface extends JFrame implements ActionListener{
                 System.out.println(k);
             }
             else if(e.getSource() == buton2 && text_user.getText().length() > 7 && text_parola.getPassword().length > 7 && k2 != 0) {
+                String query4 = "{call tip_angajat(?,?,?)}";
+                CallableStatement stmt4 = connection.prepareCall(query4);
+                stmt4.setString(1,userc);
+                stmt4.setString(2,parolac);
+                stmt4.registerOutParameter(3,Types.INTEGER);
+                stmt4.execute();
+                a = stmt4.getInt(3);
+                if(a == 2){
+                    new IT();
+                }
             }
             else if(e.getSource() == buton2 && text_user.getText().length() > 7 && text_parola.getPassword().length > 7 && k3 != 0){
                 new Admin(userc,parolac);
@@ -124,7 +135,7 @@ public class Interface extends JFrame implements ActionListener{
 
         if(e.getSource() == buton1){
             new Creeaza_cont();
-            frame.setVisible(false);}
+        }
 
 
     }
