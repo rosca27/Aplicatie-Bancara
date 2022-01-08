@@ -144,7 +144,6 @@ public class ModificareClienti extends JFrame{
     }
 
     public static void main(String[] args) {
-        new ModificareClienti();
     }
 }
 
