@@ -10,6 +10,9 @@ public class Admin {
     JButton conta = new JButton("Creeaza cont angajat");
     JButton viz_user = new JButton("Vizualizare date");
     JButton logout = new JButton("Log out");
+    JButton user_viz = new JButton("Vizualizare utilizatori");
+    JButton aprobare_card = new JButton("Aprobare Card");
+    JButton notificari = new JButton("Notificari");
 
     public Admin(String username, String parola){
         frame3.setLayout(null);

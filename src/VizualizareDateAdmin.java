@@ -110,7 +110,7 @@ public class VizualizareDateAdmin {
         save.setBounds(450, 430, 100, 30);
         save.setFocusable(false);
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "1234");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "Sergiucraiova12");
             String query = "{call view_admin_info(?,?)}";
             CallableStatement stmt = connection.prepareCall(query);
             stmt.setString(1, username);
@@ -158,7 +158,7 @@ public class VizualizareDateAdmin {
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == save) {
                     try {
-                        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "1234");
+                        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "Sergiucraiova12");
                         String val1 = nume.getText();
                         String val2 = prenume.getText();
                         String val3 = cnp.getText();

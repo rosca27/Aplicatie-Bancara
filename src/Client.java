@@ -161,6 +161,12 @@ public class Client implements ActionListener{
             }
         });
 
+        plata_facturi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new PlataFactura(username, parola);
+            }
+        });
 
     }
 
