@@ -75,7 +75,7 @@ public class Vizualizare_Card {
                     char res = rs2.getString(1).charAt(0);
                     System.out.println(res);
                         if (res == '0') {
-                            String query = "{call generare_card(?,?,?,?,?)}";
+                            String query = "{call solicitare_c(?,?,?,?,?)}";
                             CallableStatement stmt = connection.prepareCall(query);
                             stmt.setString(1, nr3t);
                             stmt.setInt(2, cvvn);
