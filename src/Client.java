@@ -121,6 +121,7 @@ public class Client implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
+                new Interface();
             }
         });
         plata_facturi.addActionListener(new ActionListener() {

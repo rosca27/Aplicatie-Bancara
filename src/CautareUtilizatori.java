@@ -50,7 +50,7 @@ public class CautareUtilizatori extends JPanel {
         try{
 
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "Sergiucraiova12");
-            String query = "select distinct nume, prenume from utilizatori;";
+            String query = "select distinct u.nume, u.prenume from utilizatori as u,clienti as c where u.id = c.utilizator_id;";
             CallableStatement stmt = connection.prepareCall(query);
             stmt.execute();
             ResultSet rs =stmt.getResultSet();
