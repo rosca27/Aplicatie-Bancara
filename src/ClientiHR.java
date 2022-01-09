@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 
-public class ModificareClienti extends JFrame{
+public class ClientiHR extends JFrame{
 
     private JList lista_u;
     private JList lista_u2;
@@ -13,7 +13,7 @@ public class ModificareClienti extends JFrame{
     private JButton buton_resetare;
     private JButton buton_vizualizare;
 
-    public ModificareClienti() {
+    public ClientiHR() {
         DefaultListModel v = new DefaultListModel<>();
         DefaultListModel c = new DefaultListModel<>();
         lista_u = new JList(v);
@@ -119,7 +119,7 @@ public class ModificareClienti extends JFrame{
                         usernamee = rs.getString(1);
                         parolaa = rs.getString(2);
                         System.out.println(usernamee + " " + parolaa);
-                        new VizualizareDateClient(usernamee,parolaa);
+                        new VizualizareHR(usernamee,parolaa);
                     }
                     int i = lista_u2.getSelectedIndex();
                     String x[] = v.get(i).toString().split(" ");
@@ -132,10 +132,10 @@ public class ModificareClienti extends JFrame{
                     stmt.execute();
                     ResultSet rs = stmt.getResultSet();
                     rs.next();
-                        usernamee = rs.getString(1);
-                        parolaa = rs.getString(2);
+                    usernamee = rs.getString(1);
+                    parolaa = rs.getString(2);
                     System.out.println(usernamee + " " + parolaa);
-                    new VizualizareDateClient(usernamee,parolaa);
+                    new VizualizareHR(usernamee,parolaa);
                 }catch (SQLException d){
                     d.printStackTrace();
                 }

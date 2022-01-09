@@ -122,6 +122,9 @@ public class Interface extends JFrame implements ActionListener{
                 }else if(a == 3){
                     new Functionar(userc,parolac);
                     frame.dispose();
+                }else if(a == 1){
+                    new HR(userc,parolac);
+                    frame.dispose();
                 }
             }
             else if(e.getSource() == buton2 && text_user.getText().length() > 7 && text_parola.getPassword().length > 7 && k3 != 0){
