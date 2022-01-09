@@ -21,6 +21,7 @@ public class Client implements ActionListener{
     JButton solicitare_card = new JButton("Solicitare card");
     JButton log_out = new JButton("Log out");
     JButton vdate = new JButton("Vizualizare date");
+    JButton notificari = new JButton("Notificari");
 
     public Client(String username, String parola){
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -36,7 +37,7 @@ public class Client implements ActionListener{
         ddep.setBounds(100,200,150,70);
         ddep.setFocusable(false);
 
-        vdate.setBounds(300, 10, 150, 70);
+        vdate.setBounds(100, 400, 150, 70);
         vdate.setFocusable(false);
 
         lcont.setBounds(300, 100,150,70);
@@ -63,6 +64,10 @@ public class Client implements ActionListener{
         log_out.setBounds(300,400,150,70);
         log_out.setFocusable(false);
 
+        notificari.setBounds(500,400,150,70);
+        notificari.setFocusable(false);
+
+        frame.add(notificari);
         frame.add(log_out);
         frame.add(solicitare_card);
         frame.add(dcont);
@@ -149,6 +154,13 @@ public class Client implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 new Vizualizare_Card(username, parola);
+            }
+        });
+
+        notificari.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ViewNotificari(username, parola);
             }
         });
 

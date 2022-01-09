@@ -56,9 +56,6 @@ public class VizualizareTranzactii extends JPanel {
         buton_aproba.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
-
                 try {
 
                     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "Sergiucraiova12");

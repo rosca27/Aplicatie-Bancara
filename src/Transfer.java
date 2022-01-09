@@ -38,7 +38,7 @@ public class Transfer {
             error2 = new JLabel ("");
             String[] x1 = new String[3];
 
-            frame11.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+            frame11.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
             frame11.setSize(750, 380);
             frame11.setLayout(null);
             frame11.setVisible (true);
