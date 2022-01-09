@@ -145,6 +145,13 @@ public class Client implements ActionListener{
             }
         });
 
+        solicitare_card.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Vizualizare_Card(username, parola);
+            }
+        });
+
     }
 
     @Override
