@@ -31,6 +31,8 @@ public class VizualizareDateAngajat {
     private JTextField jcomp26;
     private JLabel jcomp27;
     private JLabel jcomp28;
+    private JLabel jcomp29;
+    private JTextField jcomp30;
 
 
     JFrame frame = new JFrame("Vizualizare date");
@@ -52,6 +54,8 @@ public class VizualizareDateAngajat {
         jcomp13 = new JTextField(5);
         jcomp14 = new JLabel("Salariu");
         jcomp15 = new JTextField(5);
+        jcomp29 = new JLabel("Suma cont");
+        jcomp30 = new JTextField(5);
         jcomp17 = new JLabel("Norma");
         jcomp19 = new JButton("Modifica");
         jcomp20 = new JButton("Salveaza");
@@ -96,6 +100,8 @@ public class VizualizareDateAngajat {
         frame.add(jcomp26);
         frame.add(jcomp27);
         frame.add(jcomp28);
+        frame.add(jcomp29);
+        frame.add(jcomp30);
 
         jcomp1.setEditable(false);
         jcomp3.setEditable(false);
@@ -109,6 +115,7 @@ public class VizualizareDateAngajat {
         jcomp22.setEditable(false);
         jcomp25.setEditable(false);
         jcomp26.setEditable(false);
+        jcomp30.setEditable(false);
 
 
         //set component bounds (only needed by Absolute Positioning)
@@ -125,6 +132,8 @@ public class VizualizareDateAngajat {
         jcomp11.setBounds(45, 290, 185, 25);
         jcomp12.setBounds(45, 265, 100, 25);
         jcomp13.setBounds(290, 200, 170, 25);
+        jcomp29.setBounds(290,225,170,25);
+        jcomp30.setBounds(290,245,170,25);
         jcomp14.setBounds(290, 175, 100, 25);
         jcomp15.setBounds(290, 290, 95, 25);
         jcomp17.setBounds(290, 265, 100, 25);
@@ -140,14 +149,20 @@ public class VizualizareDateAngajat {
         jcomp28.setBounds (365, 365, 100, 25);
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "Sergiucraiova12", "1234");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "Sergiucraiova12");
             String query = "{call view_angajat_info(?, ?)}";
+            String query2 = "{call get_suma(?,?)}";
             CallableStatement stmt = connection.prepareCall(query);
+            CallableStatement stmt2 = connection.prepareCall(query2);
 
             stmt.setString(1, username);
             stmt.setString(2, parola);
 
+            stmt2.setString(1, username);
+            stmt2.setString(2, parola);
+
             ResultSet rs = stmt.executeQuery();
+            ResultSet rs2 = stmt2.executeQuery();
 
             while (rs.next()) {
                 jcomp1.setText(rs.getString(1));
@@ -163,6 +178,10 @@ public class VizualizareDateAngajat {
                 jcomp21.setText(rs.getString(11));
                 jcomp22.setText(rs.getString(12));
             }
+            rs2.next();
+            int k = rs2.getInt(1);
+            String k1 = String.valueOf(k);
+            jcomp30.setText(k1);
         }
         catch (SQLException d) {
             d.printStackTrace();

@@ -216,6 +216,19 @@ public class VizualizareDateClient {
                     if (res == 0)
                         frame.dispose();
 
+                    String query3 = "{call get_idd(?,?)}";
+                    CallableStatement stmt3 = connection.prepareCall(query3);
+                    stmt3.setString(1,username);
+                    stmt3.setString(2,parola);
+                    stmt3.execute();
+                    ResultSet rs = stmt3.getResultSet();
+                    rs.next();
+                    int x = rs.getInt(1);
+
+                    String query4 = "{call insert_mesaj(?)}";
+                    CallableStatement stmt4 = connection.prepareCall(query4);
+                    stmt4.setInt(1,x);
+                    stmt4.execute();
                 }
                 catch(SQLException d) {
                     d.printStackTrace();

@@ -153,24 +153,28 @@ public class Creeaza_cont extends JFrame implements ActionListener {
 
                     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proiect_final", "root", "Sergiucraiova12");
 
-                    String query ="{call create_account_client(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
-                    CallableStatement stmt = connection.prepareCall(query);
-                    stmt.setString(1,usert);
-                    stmt.setString(2,parolat);
-                    stmt.setString(3,cnpt);
-                    stmt.setString(4,numet);
-                    stmt.setString(5,prenumet);
-                    stmt.setString(6,adresat);
-                    stmt.setString(7,nr_tel);
-                    stmt.setString(8,email);
-                    stmt.setString(9,"ROBTRL"+iban);
-                    stmt.setString(10,"1");
-                    stmt.setString(11,ant+"-"+lunat+"-"+zit);
-                    stmt.setString(12,sursa_venit);
-                    stmt.setString(13,tranzactiit);
-                    stmt.execute();
-                    frame2.dispatchEvent(new WindowEvent(frame2, WindowEvent.WINDOW_CLOSING));
-                    new Interface();
+                    if(usert.length()>7 && parolat.length() > 7 && numet.length()>3 && prenumet.length() > 3 && Long.parseLong(cnpt) > 0) {
+                        String query = "{call create_account_client(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+                        CallableStatement stmt = connection.prepareCall(query);
+                        stmt.setString(1, usert);
+                        stmt.setString(2, parolat);
+                        stmt.setString(3, cnpt);
+                        stmt.setString(4, numet);
+                        stmt.setString(5, prenumet);
+                        stmt.setString(6, adresat);
+                        stmt.setString(7, nr_tel);
+                        stmt.setString(8, email);
+                        stmt.setString(9, "ROBTRL" + iban);
+                        stmt.setString(10, "1");
+                        stmt.setString(11, ant + "-" + lunat + "-" + zit);
+                        stmt.setString(12, sursa_venit);
+                        stmt.setString(13, tranzactiit);
+                        stmt.execute();
+                        frame2.dispose();
+                        new Interface();
+                    }
+                    else {text_user.setText("Minim 8 carcatere");
+                        text_parola.setText("");}
                 }
                 catch (SQLException d) {
                     d.printStackTrace();

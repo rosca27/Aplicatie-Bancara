@@ -56,7 +56,7 @@ public class Cont_angajat implements ActionListener {
         public Cont_angajat() {
 
 
-            frame2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            frame2.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             frame2.setSize(800, 600);
             frame2.getContentPane().setBackground(Color.WHITE);
             frame2.setLayout(null);

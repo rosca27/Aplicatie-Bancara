@@ -130,6 +130,9 @@ public class Transfer {
                                     stmt2.execute();
                                     error.setText("");
                                     frame11.dispose();
+                                    JFrame info = new JFrame("Succes!");
+                                    JOptionPane.showMessageDialog(info,"Solicitarea s-a realizat cu succes!");
+                                    frame11.dispose();
                                 }
 
                             } catch (SQLException d) {
@@ -164,6 +167,9 @@ public class Transfer {
                                 d.printStackTrace();
                             }
                         }
+                        JFrame info = new JFrame("Succes!");
+                        JOptionPane.showMessageDialog(info,"Solicitarea s-a realizat cu succes!");
+                        frame11.dispose();
                     }
                     else error2.setText("Introduceti o suma");
                     }
@@ -218,6 +224,7 @@ public class Transfer {
                     }catch (SQLException d){
                         d.printStackTrace();
                     }
+                    frame11.dispose();
                 }
             });
 

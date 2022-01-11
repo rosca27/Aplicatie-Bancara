@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class Creare_cont {
 
     JFrame frame5 = new JFrame("Creare cont");
-    String v[] = {"CURENT","ECONOMII"};
+    String v[] = {"CURENT","ECONOMII","FACTURI"};
     String[] bancav = {"Banca Transilvania","ING", "Alpha Bank"};
     JComboBox bancao = new JComboBox(bancav);
     JComboBox tip_cont = new JComboBox(v);

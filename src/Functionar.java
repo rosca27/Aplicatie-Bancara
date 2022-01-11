@@ -45,7 +45,7 @@ public class Functionar extends JPanel {
         buton_vizualizare.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VizualizareDateAdmin(username, parola);
+                new VizualizareDateAngajat(username, parola);
             }
         });
 

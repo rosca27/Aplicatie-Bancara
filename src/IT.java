@@ -41,7 +41,7 @@ public class IT extends JPanel {
         buton_vizualizare.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VizualizareDateAdmin(username, parola);
+                new VizualizareDateAngajat(username, parola);
             }
         });
         buton_modificare.addActionListener(new ActionListener() {

@@ -43,7 +43,7 @@ public class HR extends JPanel {
         buton_date.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VizualizareDateAdmin(username, parola);
+                new VizualizareDateAngajat(username, parola);
             }
         });
         buton_logout.addActionListener(new ActionListener() {

@@ -19,7 +19,7 @@ public class AprobareCard extends JPanel {
         buton_aproba = new JButton ("Aproba");
         buton_iesire = new JButton ("Iesire");
         JLabel tranz = new JLabel ("Vizualizare tranzactii");
-        frame13.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        frame13.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
         frame13.setResizable(false);
         frame13.setLayout(null);
         buton_aproba.setFocusable(false);
